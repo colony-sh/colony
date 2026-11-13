@@ -76,3 +76,4 @@ Found in colony-shell during build step 1, after this inventory was taken. The t
 - The Ollama provider sends no tools.
 - `shell_exec` runs commands with `sh -c`, not through Colony's shell.
 - `token_budget` is an estimate at 4 characters per token, not a real token count.
+- Heartbeat runs can still read secret files inside the project directory, such as `.env`. File reads and search are confined to the `HEARTBEAT.md` directory, but nothing inside it is excluded.
