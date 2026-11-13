@@ -2,7 +2,7 @@
 
 An agent development environment and app platform, built on the [Colony shell](https://github.com/colony-sh/colony-shell).
 
-This repository holds the design. It has no code yet. The engine, and all first-slice work, lives in `colony-sh/colony-shell`. The shell's command stays `colony`; its daemon is `colonyd`.
+This repository is the home of the Colony ADE application. Work on the application has not started, so for now it holds the design docs. The engine, and all first-slice work, lives in `colony-sh/colony-shell`. The shell's command stays `colony`; its daemon is `colonyd`.
 
 ## The idea
 
