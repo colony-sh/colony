@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lead miner: daily report</title>
+<style>
+  :root { --ink: #1c1b19; --muted: #6b6860; --line: #e2dfd6; --paper: #faf9f5; --accent: #2f6f5e; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { padding: 28px 32px; color: white;
+           background: linear-gradient(120deg, #2f6f5e, #1d4a40); }
+  header h1 { margin: 0 0 4px; font-size: 24px; font-weight: 600; }
+  header p { margin: 0; opacity: 0.8; }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 32px 48px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+  .stat { background: white; border: 1px solid var(--line); border-radius: 10px; padding: 16px;
+          box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04); }
+  .stat b { display: block; font-size: 28px; font-weight: 600; }
+  .stat span { color: var(--muted); font-size: 13px; }
+  h2 { font-size: 17px; margin: 28px 0 12px; }
+  .card { display: flex; gap: 14px; background: white; border: 1px solid var(--line);
+          border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+  .avatar { flex: none; width: 40px; height: 40px; border-radius: 50%; overflow: hidden;
+            background: #d9e6e1; }
+  .avatar i { display: block; width: 40px; height: 40px;
+              background: radial-gradient(circle at 30% 30%, #9cc7ba, #2f6f5e); }
+  .card h3 { margin: 0 0 2px; font-size: 15px; }
+  .card p { margin: 0; color: var(--muted); }
+  .card em { font-style: italic; }
+  .tag { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px;
+         background: #e8f1ee; color: var(--accent); border: 1px solid #c9ddd6; }
+  .tag.warn { background: #fbf0dc; color: #8a5a00; border-color: #efd9a8; }
+  .actions { margin-top: 10px; display: flex; gap: 8px; }
+  button { font: inherit; padding: 6px 14px; border-radius: 6px; border: 1px solid var(--line);
+           background: white; color: var(--ink); }
+  button.primary { background: var(--accent); border-color: var(--accent); color: white; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; background: white; border: 1px solid var(--line); }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px;
+         background: #f0eee8; padding: 1px 5px; border-radius: 4px; }
+  .muted { opacity: 0.55; }
+  .stamp { display: inline-block; margin-top: 20px; padding: 4px 10px; border: 2px solid #b4432f;
+           color: #b4432f; font-weight: 700; transform: rotate(-4deg); }
+  footer { margin-top: 28px; padding-top: 12px; border-top: 1px dashed var(--line);
+           color: var(--muted); font-size: 13px; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Lead miner: daily report</h1>
+  <p>Run 14 finished in 3m 12s inside a fresh container.</p>
+</header>
+<main>
+  <div class="stats">
+    <div class="stat"><b>38</b><span>threads read</span></div>
+    <div class="stat"><b>5</b><span>replies drafted</span></div>
+    <div class="stat"><b>2</b><span>need your answer</span></div>
+  </div>
+
+  <h2>Needs you</h2>
+  <div class="card">
+    <div class="avatar"><i></i></div>
+    <div>
+      <h3>“Is there a shared room my agents can meet in?” <span class="tag warn">ask</span></h3>
+      <p>Posted 2 hours ago. The draft mentions pricing, which the charter says to <em>check with you first</em>.</p>
+      <div class="actions"><button class="primary">Approve draft</button><button>Edit</button><button>Skip</button></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="avatar"><i></i></div>
+    <div>
+      <h3>“Agents keep clobbering each other's files” <span class="tag">draft ready</span></h3>
+      <p>Evidence: <code>colony://agents/lead-miner/runs/14/outputs/2</code></p>
+      <div class="actions"><button class="primary">Approve draft</button><button>Edit</button><button>Skip</button></div>
+    </div>
+  </div>
+
+  <h2>Budget</h2>
+  <table>
+    <thead><tr><th>Resource</th><th>Used</th><th>Limit</th></tr></thead>
+    <tbody>
+      <tr><td>Tokens</td><td class="num">41,200</td><td class="num">60,000</td></tr>
+      <tr><td>Tool calls</td><td class="num">27</td><td class="num">40</td></tr>
+      <tr><td>Wall clock</td><td class="num">3m 12s</td><td class="num">10m</td></tr>
+      <tr class="muted"><td>Network hosts granted</td><td class="num">2</td><td class="num">2</td></tr>
+    </tbody>
+  </table>
+
+  <div class="stamp">PARKED</div>
+
+  <footer>Next beat tomorrow at 09:00. <a href="#">Open the full log</a>.</footer>
+</main>
+</body>
+</html>

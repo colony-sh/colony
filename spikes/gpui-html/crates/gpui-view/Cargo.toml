@@ -1,0 +1,29 @@
+[package]
+name = "colony-html-gpui"
+version = "0.0.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+publish = false
+# The pinned GPUI commit does not build on older compilers.
+rust-version = "1.100"
+
+# Its own workspace, so the GPUI-free crates next door never fetch or compile GPUI.
+[workspace]
+
+[dependencies]
+colony-html-doc = { path = "../doc" }
+colony-html-paint = { path = "../paint" }
+kurbo = "0.13"
+peniko = "0.6"
+ttf-parser = "0.25"
+
+# GPUI, pinned to upstream Zed `main` as of 2026-11-24.
+# Once colony-sh/zed is synced past this commit, point all three `git =` URLs in this
+# file at the fork so renderer patches can live on a branch there.
+gpui = { git = "https://github.com/zed-industries/zed", rev = "0be6d5990f9f6e3917464603a99808502cc824af" }
+
+[dev-dependencies]
+# `test-support` provides the headless test window used by `tests/headless.rs`.
+gpui = { git = "https://github.com/zed-industries/zed", rev = "0be6d5990f9f6e3917464603a99808502cc824af", features = ["test-support"] }
+# The example needs a real platform. `wayland` and `x11` only matter on Linux.
+gpui_platform = { git = "https://github.com/zed-industries/zed", rev = "0be6d5990f9f6e3917464603a99808502cc824af", features = ["font-kit", "wayland", "x11"] }
